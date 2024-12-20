@@ -371,6 +371,7 @@ fn_shell_init_zsh() { (
 fn_shell_integrate_fish() { (
     a_force="${1}"
     compdir="${__fish_config_dir:-$HOME/.config/fish}/completions"
+
     if test -z "${a_force}"; then
         if ! test -d "$compdir"; then
             return 0
@@ -379,13 +380,13 @@ fn_shell_integrate_fish() { (
  
  mkdir -p "$compdir"
  echo "complete -c webi --exclusive --arguments '(webi --list)'" > "$compdir/webi.fish"
- echo "completions Added to $compdir/webi.fish"
+ echo "completions Added to `$compdir/webi.fish`"
  
 ); }
 
 # shellcheck disable=SC2016
 fn_shell_init_fish() { (
- # in fish completion are automatically lazy loaded from config/fish/completions/<command>.fish
+ # in fish, completion are automatically lazy loaded from config/fish/completions/<command>.fish
  # keeping this empty for retro compat with previous `webi --init fish | source` in config.fish
 ); }
 
