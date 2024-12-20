@@ -370,10 +370,11 @@ fn_shell_init_zsh() { (
 
 fn_shell_integrate_fish() { (
     a_force="${1}"
-    compdir="${__fish_config_dir:-$HOME/.config/fish}/completions"
+    compdir="$HOME/.config/fish/completions"
 
     if test -z "${a_force}"; then
         if ! test -d "$compdir"; then
+            # fish not installed or custom $__fish_config_dir 
             return 0
         fi
     fi
@@ -388,6 +389,7 @@ fn_shell_integrate_fish() { (
 fn_shell_init_fish() { (
  # in fish, completion are automatically lazy loaded from config/fish/completions/<command>.fish
  # keeping this empty for retro compat with previous `webi --init fish | source` in config.fish
+ return 0
 ); }
 
 webi_list() { (
